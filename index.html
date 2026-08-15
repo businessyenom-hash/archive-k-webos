@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive K</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="desktop">
+    <!-- Video wallpaper: Pixabay video 98654 by Bairyna -->
+    <video id="desktop-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="assets/cat-background.mp4" type="video/mp4">
+    </video>
+    <div id="desktop-overlay" aria-hidden="true"></div>
+
+    <div id="desktop-fish" role="button" tabindex="0" aria-label="Kevin's desktop fish" title="Click the fish!">
+      <span id="fish-emoji" aria-hidden="true">🐠</span>
+    </div>
+
+    <div class="desktop-icon" data-window="aboutWindow" role="button" tabindex="0" style="left: 20px; top: 20px;">
+      <div class="icon">👤</div>
+      <p>About</p>
+    </div>
+
+    <div class="desktop-icon" data-window="determinationWindow" role="button" tabindex="0" style="left: 20px; top: 120px;">
+      <div class="icon">🏆</div>
+      <p>Determination</p>
+    </div>
+
+    <div class="desktop-icon" data-window="projectsWindow" role="button" tabindex="0" style="left: 20px; top: 220px;">
+      <div class="icon">⚙️</div>
+      <p>Projects</p>
+    </div>
+
+    <div class="desktop-icon" data-window="meWindow" role="button" tabindex="0" style="left: 20px; top: 320px;">
+      <div class="icon">🗒️</div>
+      <p>ME?</p>
+    </div>
+
+    <div class="desktop-icon" data-window="messageWindow" role="button" tabindex="0" style="left: 20px; top: 420px;">
+      <div class="icon">✉️</div>
+      <p>Message Me</p>
+    </div>
+
+    <div class="desktop-icon" data-window="visitorWallWindow" role="button" tabindex="0" style="left: 20px; top: 520px;">
+      <div class="icon">👥</div>
+      <p>Visitor Wall</p>
+    </div>
+
+    <!-- ABOUT WINDOW -->
+    <div class="window" id="aboutWindow">
+      <div class="title-bar">
+        <span>About Me</span>
+        <button onclick="closeWindow('aboutWindow')">×</button>
+      </div>
+
+      <div class="window-content">
+        <h2>Welcome.</h2>
+        <p>
+          Instead of telling you everything about me,
+          explore the desktop and find out yourself.
+        </p>
+      </div>
+    </div>
+
+    <!-- DETERMINATION WINDOW -->
+    <div class="window" id="determinationWindow">
+      <div class="title-bar">
+        <span>Determination</span>
+        <button onclick="closeWindow('determinationWindow')">×</button>
+      </div>
+
+      <div class="window-content">
+        <h2>Determination</h2>
+        <p>
+          Some things aren't won by talent.
+          They're won by refusing to stop.
+        </p>
+
+        <!-- Add your trophy photo later -->
+        <!-- <img src="images/trophy.jpg"> -->
+      </div>
+    </div>
+
+    <!-- PROJECTS WINDOW -->
+    <div class="window" id="projectsWindow">
+      <div class="title-bar">
+        <span>Projects</span>
+        <button onclick="closeWindow('projectsWindow')">×</button>
+      </div>
+
+      <div class="window-content">
+        <h2>Things I've Built</h2>
+        <p>🤖 BLOK — AI desktop robot</p>
+        <p>🎲 Coinflip Slack Bot</p>
+        <p>💻 Archive K — WebOS</p>
+      </div>
+    </div>
+
+    <!-- ME? WINDOW -->
+    <div class="window me-window" id="meWindow">
+      <div class="title-bar">
+        <span>ME? — Folder</span>
+        <button onclick="closeWindow('meWindow')">×</button>
+      </div>
+
+      <div class="window-content folder-content">
+        <div class="folder-path">ARCHIVE K / ME?</div>
+
+        <div class="folder-grid">
+          <button class="folder-file" onclick="openWindow('introNoteWindow')">
+            <span class="file-icon">🗒️</span>
+            <span>START_HERE.note</span>
+          </button>
+
+          <button class="folder-file game-file" onclick="openMindGame()">
+            <span class="file-icon">🧠</span>
+            <span>Wanna play a game<br>with me? ;)</span>
+          </button>
+
+          <button class="folder-file photo-file" onclick="openWindow('morayPhotoWindow')">
+            <span class="file-icon photo-thumbnail">
+              <img src="assets/kevin-moray.jpeg" alt="">
+            </span>
+            <span>kevin_moray.jpeg</span>
+          </button>
+
+          <button class="folder-file photo-file" onclick="openWindow('trainingPhotoWindow')">
+            <span class="file-icon photo-thumbnail">
+              <img src="assets/training.jpeg" alt="">
+            </span>
+            <span>training.jpeg</span>
+          </button>
+
+          <button class="folder-file photo-file" onclick="openWindow('gradeEightPhotoWindow')">
+            <span class="file-icon photo-thumbnail">
+              <img src="assets/grade-8-complete.jpeg" alt="">
+            </span>
+            <span>grade8_complete.jpeg</span>
+          </button>
+
+          <button class="folder-file photo-file" onclick="openWindow('nightVisionPhotoWindow')">
+            <span class="file-icon photo-thumbnail">
+              <img src="assets/night-vision-project.jpeg" alt="">
+            </span>
+            <span>night_vision_project.jpeg</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTRO STICKY NOTE WINDOW -->
+    <div class="window intro-note-window" id="introNoteWindow">
+      <div class="title-bar">
+        <span>START_HERE.note</span>
+        <button onclick="closeWindow('introNoteWindow')">×</button>
+      </div>
+
+      <div class="window-content note-area">
+        <button
+          class="sticky-note"
+          id="kevinNote"
+          onclick="flipNote()"
+          aria-label="Flip Kevin's sticky note"
+          aria-pressed="false"
+        >
+          <span class="sticky-note-inner">
+            <span class="note-face note-front">
+              <span class="note-pin"></span>
+              <strong>FLIP IT</strong>
+              <span class="note-arrow">↻</span>
+              <small>click the note</small>
+            </span>
+
+            <span class="note-face note-back">
+              <span class="note-pin"></span>
+              <strong>HEY, I'M KEVIN.</strong>
+              <span>
+                I'M FROM <b>OK03GS</b>.<br>
+                DON'T KNOW WHAT THAT MEANS?
+              </span>
+              <em>SEARCH IT UP.</em>
+              <small>click to flip back</small>
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MORAY PHOTO VIEWER -->
+    <div class="window photo-window" id="morayPhotoWindow">
+      <div class="title-bar">
+        <span>Photo Viewer — kevin_moray.jpeg</span>
+        <button onclick="closeWindow('morayPhotoWindow')">×</button>
+      </div>
+
+      <div class="window-content photo-viewer">
+        <figure>
+          <img
+            src="assets/kevin-moray.jpeg"
+            alt="Kevin scuba diving above a coral reef near a moray eel"
+          >
+          <figcaption>me with mr moray eel ;)</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- TRAINING PHOTO VIEWER -->
+    <div class="window photo-window training-photo-window" id="trainingPhotoWindow">
+      <div class="title-bar">
+        <span>Photo Viewer — training.jpeg</span>
+        <button onclick="closeWindow('trainingPhotoWindow')">×</button>
+      </div>
+
+      <div class="window-content photo-viewer">
+        <figure>
+          <img
+            src="assets/training.jpeg"
+            alt="An indoor swimming pool set up with training lanes"
+          >
+          <figcaption>training</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- GRADE 8 PHOTO VIEWER -->
+    <div class="window photo-window" id="gradeEightPhotoWindow">
+      <div class="title-bar">
+        <span>Photo Viewer — grade8_complete.jpeg</span>
+        <button onclick="closeWindow('gradeEightPhotoWindow')">×</button>
+      </div>
+
+      <div class="window-content photo-viewer">
+        <figure>
+          <img
+            src="assets/grade-8-complete.jpeg"
+            alt="Kevin at his Grade 8 moving-up ceremony"
+          >
+          <figcaption>grade 8 complete — high school loading...</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- NIGHT VISION PROJECT PHOTO VIEWER -->
+    <div class="window photo-window portrait-photo-window" id="nightVisionPhotoWindow">
+      <div class="title-bar">
+        <span>Photo Viewer — night_vision_project.jpeg</span>
+        <button onclick="closeWindow('nightVisionPhotoWindow')">×</button>
+      </div>
+
+      <div class="window-content photo-viewer">
+        <figure>
+          <img
+            src="assets/night-vision-project.jpeg"
+            alt="Kevin's night vision project prototype"
+          >
+          <figcaption>my night vision project</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- MIND READER GAME WINDOW -->
+    <div class="window game-window" id="mindGameWindow">
+      <div class="title-bar">
+        <span>Wanna play a game with me? ;)</span>
+        <button onclick="closeWindow('mindGameWindow')">×</button>
+      </div>
+
+      <div class="window-content game-area">
+        <div class="game-card" id="mindGameCard">
+          <div class="game-header">
+            <span>MIND_READER.exe</span>
+            <span id="gameProgress">1 / 7</span>
+          </div>
+          <div class="game-scanline" aria-hidden="true"></div>
+          <h2 id="gameTitle">WANNA PLAY A GAME WITH ME? ;)</h2>
+          <p id="gameInstruction">Pick any number between 1 and 10. Don't tell me.</p>
+          <button class="game-next" id="gameNext" onclick="nextMindGameStep()">I PICKED ONE</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISITOR MESSAGE WINDOW -->
+    <div class="window message-window" id="messageWindow">
+      <div class="title-bar">
+        <span>MESSAGE_ME.txt</span>
+        <button onclick="closeWindow('messageWindow')">×</button>
+      </div>
+
+      <div class="window-content message-area">
+        <form class="visitor-form" id="visitorForm" onsubmit="prepareVisitorMessage(event)">
+          <div class="message-intro">
+            <span class="message-status">INCOMING CONNECTION...</span>
+            <h2>Tell me about you ;)</h2>
+            <p>You looked through my files. Fair enough. Now it's your turn.</p>
+          </div>
+
+          <div class="message-fields">
+            <label>
+              <span>Name or nickname <small>optional</small></span>
+              <input id="visitorName" name="name" type="text" maxlength="40" placeholder="What should I call you?">
+            </label>
+
+            <label>
+              <span>Your email <small>optional — so Kevin can reply</small></span>
+              <input id="visitorEmail" name="email" type="email" maxlength="100" placeholder="you@example.com">
+            </label>
+
+            <label>
+              <span>Tell me about you ;)</span>
+              <textarea id="visitorMessage" name="message" maxlength="500" required placeholder="Whatever you want me to know..."></textarea>
+            </label>
+          </div>
+
+          <button class="transmit-button" id="messageSubmitButton" type="submit">TRANSMIT MESSAGE</button>
+          <p class="form-submit-status" id="formSubmitStatus" role="status"></p>
+        </form>
+
+        <div class="message-ready" id="messageReady" hidden>
+          <span class="message-status" id="messageResultStatus">TRANSMISSION SENT</span>
+          <h2 id="messageResultTitle">Your message reached Kevin.</h2>
+          <p id="messageResultText">Thanks for leaving something behind.</p>
+          <textarea id="messagePreview" readonly aria-label="Formatted message" hidden></textarea>
+          <div class="message-actions">
+            <button class="transmit-button" id="copyMessageButton" type="button" onclick="copyVisitorMessage()" hidden>COPY MESSAGE</button>
+            <button class="message-secondary" type="button" onclick="resetVisitorMessage()">WRITE ANOTHER</button>
+          </div>
+          <p class="copy-status" id="copyStatus" role="status"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISITOR WALL WINDOW -->
+    <div class="window visitor-wall-window" id="visitorWallWindow">
+      <div class="title-bar">
+        <span>VISITOR_WALL.log</span>
+        <button onclick="closeWindow('visitorWallWindow')">×</button>
+      </div>
+
+      <div class="window-content visitor-wall-content">
+        <div class="visitor-wall-header">
+          <div>
+            <span class="visitor-wall-kicker">ARCHIVE K // PUBLIC LOG</span>
+            <h2>Leave your mark.</h2>
+            <p>Write a nickname here so the next people who enter the OS can see you :)</p>
+          </div>
+          <div class="visitor-counter" aria-label="Visitor count">
+            <strong id="visitorCount">0</strong>
+            <span>VISITORS</span>
+          </div>
+        </div>
+
+        <p class="visitor-sync-notice" id="visitorSyncNotice" role="status">CONNECTING TO PUBLIC LOG...</p>
+
+        <form class="visitor-wall-form" id="visitorWallForm" onsubmit="addVisitorWallEntry(event)">
+          <label>
+            <span>Your nickname</span>
+            <input id="visitorWallName" name="name" type="text" maxlength="24" required placeholder="Who are you?">
+          </label>
+          <label>
+            <span>Leave something behind <small>(optional)</small></span>
+            <textarea id="visitorWallMessage" name="message" maxlength="120" placeholder="I was here..."></textarea>
+          </label>
+          <button class="transmit-button" id="visitorWallSubmit" type="submit">SIGN THE WALL</button>
+          <p class="visitor-wall-privacy">Only use a nickname you are okay sharing publicly.</p>
+          <p class="form-submit-status" id="visitorWallStatus" role="status"></p>
+        </form>
+
+        <div class="visitor-entries" id="visitorWallEntries" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <!-- TASKBAR -->
+    <div id="taskbar">
+      <div id="start">K</div>
+      <div id="clock"></div>
+    </div>
+  </div>
+
+  <script src="guestbook-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
